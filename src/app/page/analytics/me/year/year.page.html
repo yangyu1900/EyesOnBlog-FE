@@ -1,0 +1,74 @@
+<app-header></app-header>
+
+<ion-content [fullscreen]="true">
+  <div class="ion-padding filter-div">
+    <select (change)="selectPod($event.target.value)">
+      <option *ngFor="let pod of pods" value="{{ pod.podId }}">{{ pod.podName.toUpperCase() }}</option>
+    </select>
+    <span>&nbsp;</span>
+    <select (change)="selectYear($event.target.value)">
+      <option *ngFor="let year of years;" value="{{ year }}">{{ year }}</option>
+    </select>
+    <span>&nbsp;</span>
+    <select (change)="selectBasis($event.target.value)">
+      <option value="0">CY</option>
+      <option value="1">FY</option>
+    </select>
+  </div>
+  <div class="ion-padding category-chart-div">
+    <ion-card>
+      <ion-card-content>
+        <canvas id="my-yearly-post-by-month"></canvas>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <canvas id="my-yearly-post-by-vertical"></canvas>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <canvas id="my-yearly-post-by-vertical-by-month"></canvas>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <canvas id="my-yearly-pageview-by-month"></canvas>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <canvas id="my-yearly-pageview-by-vertical"></canvas>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <canvas id="my-yearly-pageview-by-vertical-by-month"></canvas>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <canvas id="my-yearly-avg-pageview-per-post-by-month"></canvas>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <canvas id="my-yearly-avg-pageview-per-post-by-vertical"></canvas>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <canvas id="my-yearly-avg-pageview-per-post-by-vertical-by-month"></canvas>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+</ion-content>

@@ -1,0 +1,60 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay">
+      <ion-content>
+        <ion-list lines="none" id="menu-list">
+          <ion-list-header>EyesOnBlog</ion-list-header>
+          <ion-note>aka.ms/eob</ion-note>
+
+          <ion-menu-toggle auto-hide="false">
+            <ion-item-group *ngFor="let page of appPages">
+              <ion-item *ngIf="page.subPages == null" routerDirection="root" [routerLink]="[page.url]" lines="none"
+                detail="false" routerLinkActive="selected">
+                <ion-icon slot="start" src="{{ page.icon }}"></ion-icon>
+                <ion-label>{{ page.title }}</ion-label>
+              </ion-item>
+            </ion-item-group>
+          </ion-menu-toggle>
+          <ion-item-group *ngFor="let page of appPages">
+            <ion-item *ngIf="page.subPages != null" lines="none" detail="false">
+              <ion-icon slot="start" src="{{ page.icon }}"></ion-icon>
+              <ion-label>{{ page.title }}</ion-label>
+              <ion-icon *ngIf="!page.showSubPages" slot="end" src="{{ page.icon_close }}" class="secondary" (click)="toggleSubPages(page)" (keypress)="toggleSubPages(page)" tabindex="0"></ion-icon>
+              <ion-icon *ngIf="page.showSubPages" slot="end" src="{{ page.icon_open }}" clase="secondary" (click)="toggleSubPages(page)" (keypress)="toggleSubPages(page)" tabindex="0"></ion-icon>
+            </ion-item>
+
+            <ion-item-group *ngIf="page.subPages != null && page.showSubPages">
+              <ion-item-group *ngFor="let subPage of page.subPages">
+                <ion-item *ngIf="subPage.subPages == null" routerDirection="root" [routerLink]="[subPage.url]"
+                  lines="none" detail="false" routerLinkActive="selected">
+                  <ion-icon slot="start"></ion-icon>
+                  <ion-label>{{ subPage.title }}</ion-label>
+                </ion-item>
+                <ion-item *ngIf="subPage.subPages != null" lines="none" detail="false">
+                  <ion-icon slot="start"></ion-icon>
+                  <ion-label>{{ subPage.title }}</ion-label>
+                  <ion-icon *ngIf="!subPage.showSubPages" slot="end" src="{{ page.icon_close }}" class="secondary" (click)="toggleSubPages(subPage)" (keypress)="toggleSubPages(subPage)" tabindex="0">
+                  </ion-icon>
+                  <ion-icon *ngIf="subPage.showSubPages" slot="end" src="{{ page.icon_open }}" clase="secondary" (click)="toggleSubPages(subPage)" (keypress)="toggleSubPages(subPage)" tabindex="0">
+                  </ion-icon>
+                </ion-item>
+                <ion-menu-toggle auto-hide="false">
+                  <ion-item-group *ngIf="subPage.subPages != null && subPage.showSubPages">
+                    <ion-item *ngFor="let subSubPage of subPage.subPages" routerDirection="root"
+                      [routerLink]="[subSubPage.url]" lines="none" detail="false" routerLinkActive="selected"
+                      class="subpage">
+                      <ion-icon slot="start"></ion-icon>
+                      <ion-label>{{ subSubPage.title }}</ion-label>
+                    </ion-item>
+                  </ion-item-group>
+                </ion-menu-toggle>
+              </ion-item-group>
+            </ion-item-group>
+          </ion-item-group>
+        </ion-list>
+
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

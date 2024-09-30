@@ -1,0 +1,59 @@
+<app-header></app-header>
+
+<ion-content [fullscreen]="true">
+  <div class="ion-padding">
+    <ion-card>
+      <img src="./assets/picture/balloon.png" />
+      <ion-card-header>
+        <ion-card-title>REVIEW REQUEST</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <form [formGroup]="reviewRequestForm" (ngSubmit)="onSubmitReviewRequest()" autocomplete="off" novalidate>
+          <label for="title">BLOG TITLE:</label>
+          <input type="text" id="title" formControlName="title">
+          <span class="error" *ngIf="isSubmitted && getErrorControl().title.errors?.required">
+            Title is required.
+          </span>
+          <br>
+          <label for="url">DRAFT URL:</label>
+          <input type="text" id="url" formControlName="url">
+          <span class="error" *ngIf="isSubmitted && getErrorControl().url.errors?.required">
+            Url is required.
+          </span>
+          <span class="error" *ngIf="isSubmitted && getErrorControl().url.errors?.pattern">
+            Url is invalid.
+          </span>
+          <br>
+          <div class="sub-div">
+            <label for="podId">POD:</label>
+            <ion-select interface="popover" [interfaceOptions]="{'cssClass': 'mycomponent-wider-popover'}" id="podId"
+              formControlName="podId" multiple="false"
+              (ionChange)="selectPod($event.target.value)">
+              <ion-select-option class="select-option" *ngFor="let pod of pods" value="{{ pod.podId }}">
+                {{ pod.podName.toUpperCase() }}
+              </ion-select-option>
+            </ion-select>
+          </div>
+          <span class="error" *ngIf="isSubmitted && getErrorControl().podId.errors?.required">
+            Pod is required.
+          </span>
+          <br>
+          <div class="sub-div">
+            <label for="vertical">VERTICAL:</label>
+            <ion-select interface="popover" [interfaceOptions]="{'cssClass': 'mycomponent-wider-popover'}" id="vertical"
+              formControlName="vertical">
+              <ion-select-option class="select-option" *ngFor="let vertical of verticals" value="{{ vertical }}">
+                {{ vertical.toUpperCase() }}
+              </ion-select-option>
+            </ion-select>
+          </div>
+          <span class="error" *ngIf="isSubmitted && getErrorControl().vertical.errors?.required">
+            Vertical is required.
+          </span>
+          <br>
+          <input type="submit" id="submit" value="Submit">
+        </form>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

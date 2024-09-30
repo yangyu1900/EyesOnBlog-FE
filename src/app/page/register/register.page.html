@@ -1,0 +1,73 @@
+
+<app-header></app-header>
+
+<ion-content [fullscreen]="true">
+  <div class="ion-padding">
+    <ion-card>
+      <img src="./assets/picture/touch.png" />
+      <ion-card-header>
+        <ion-card-title>REGISTER REQUEST</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <form [formGroup]="registerRequestForm" (ngSubmit)="onSubmitRegisterRequest()" autocomplete="off" novalidate>
+          <label for="userId">TECHCOMMUNITY USERID:</label>
+          <input type="text" id="userId" formControlName="userId">
+          <span class="error" *ngIf="isSubmitted && getErrorControl().userId.errors?.required">
+            UserId is required.
+          </span>
+          <span class="error" *ngIf="isSubmitted && getErrorControl().userId.errors?.pattern">
+            UserId is invalid.
+          </span>
+          <br>
+          <label for="userName">TECHCOMMUNITY USERNAME:</label>
+          <input type="text" id="userName" formControlName="userName">
+          <span class="error" *ngIf="isSubmitted && getErrorControl().userName.errors?.required">
+            UserName is required.
+          </span>
+          <br>
+          <div class="sub-div">
+            <label for="roles">ROLES:</label>
+            <ion-select interface="popover" [interfaceOptions]="{'cssClass': 'mycomponent-wider-popover'}" id="roles"
+              formControlName="roles" multiple=“true”>
+              <ion-select-option class="select-option" *ngFor="let role of roles" value="{{ role }}">
+                {{ role.toUpperCase() }}
+              </ion-select-option>
+            </ion-select>
+          </div>
+          <span class="error" *ngIf="isSubmitted && getErrorControl().roles.errors?.required">
+            Role preference is required.
+          </span>
+          <br>
+          <div class="sub-div">
+            <label for="podId">POD:</label>
+            <ion-select interface="popover" [interfaceOptions]="{'cssClass': 'mycomponent-wider-popover'}" id="podId"
+              formControlName="podId" multiple="false"
+              (ionChange)="selectPod($event.target.value)">
+              <ion-select-option class="select-option" *ngFor="let pod of pods" value="{{ pod.podId }}">
+                {{ pod.podName.toUpperCase() }}
+              </ion-select-option>
+            </ion-select>
+          </div>
+          <span class="error" *ngIf="isSubmitted && getErrorControl().podId.errors?.required">
+            Pod is required.
+          </span>
+          <br>
+          <div class="sub-div">
+            <label for="verticals">VERTICALS:</label>
+            <ion-select interface="popover" [interfaceOptions]="{'cssClass': 'mycomponent-wider-popover'}"
+              id="verticals" formControlName="verticals" multiple="true">
+              <ion-select-option class="select-option" *ngFor="let vertical of verticals" value="{{ vertical }}">
+                {{ vertical.toUpperCase() }}
+              </ion-select-option>
+            </ion-select>
+          </div>
+          <span class="error" *ngIf="isSubmitted && getErrorControl().verticals.errors?.required">
+            Vertical is required.
+          </span>
+          <br>
+          <input type="submit" id="submit" value="Submit">
+        </form>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

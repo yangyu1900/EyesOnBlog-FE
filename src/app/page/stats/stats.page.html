@@ -1,0 +1,44 @@
+<app-header></app-header>
+
+<ion-content [fullscreen]="true">
+  <div class="ion-padding filter-div">
+    <form [formGroup]="searchRequestForm" (ngSubmit)="onSubmitSearchRequest()" autocomplete="off" novalidate>
+      <input type="text" id="keywords" formControlName="keywords">
+      <span>&nbsp;</span>
+      <input type="submit" id="submit" value="Search">
+    </form>
+    <span>&nbsp;</span>
+    <select (change)="selectPod($event.target.value)">
+      <option *ngFor="let pod of pods" value="{{ pod.podId }}">{{ pod.podName.toUpperCase() }}</option>
+    </select>
+  </div>
+
+  <div class="ion-padding summary-table">
+    <mat-table [dataSource]="records" matSort class="mat-elevation-z8">
+      <!-- Column -->
+      <ng-container *ngFor="let header of tableHeaders; let i = index;" matColumnDef="{{ header }}">
+        <mat-header-cell *matHeaderCellDef class="summary-table-header summary-table-column-{{ header }}">
+          {{ header.toUpperCase() }}
+          <span>&nbsp;</span>
+          <ion-icon class="summary-table-header-order-icon" id="{{ i }}" (click)="onClickOrderIcon($event.target)"
+            (mouseenter)="onMouseEnterOrderIcon($event.target)" (mouseleave)="onMouseLeaveOrderIcon($event.target)"
+            src="{{ orderIcons[i] }}">
+          </ion-icon>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let record" class="summary-table-column-{{ header }}">
+          <span *ngIf="header != 'title'">{{ record[header] }}</span>
+          <a *ngIf="header == 'title'" href="{{ record['url'] }}" target="_blank">{{ record[header] }}</a>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="tableHeaders; sticky: true;"></mat-header-row>
+      <mat-row *matRowDef="let row;  columns: tableHeaders;"></mat-row>
+    </mat-table>
+  </div>
+
+  <div class="ion-padding pagination-div">
+    <button (click)="onClickPrevButton()">Prev</button>
+    <span>&nbsp;</span>
+    <button (click)="onClickNextButton()">Next</button>
+  </div>
+</ion-content>

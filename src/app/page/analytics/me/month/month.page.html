@@ -1,0 +1,37 @@
+<app-header></app-header>
+
+<ion-content [fullscreen]="true">
+  <div class="ion-padding filter-div">
+    <select (change)="selectPod($event.target.value)">
+      <option *ngFor="let pod of pods" value="{{ pod.podId }}">{{ pod.podName.toUpperCase() }}</option>
+    </select>
+    <span>&nbsp;</span>
+    <select (change)="selectYear($event.target.value)">
+      <option *ngFor="let year of years;" value="{{ year }}">{{ year }}</option>
+    </select>
+    <span>&nbsp;</span>
+    <select (change)="selectMonth($event.target.value)">
+      <option *ngFor="let month of months;" value="{{ month }}">{{ month }}</option>
+    </select>
+  </div>
+  <div class="ion-padding category-chart-div">
+    <ion-card>
+      <ion-card-content>
+        <canvas id="my-monthly-post-by-vertical"></canvas>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <canvas id="my-monthly-pageview-by-vertical"></canvas>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <canvas id="my-monthly-avg-pageview-per-post-by-vertical"></canvas>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+</ion-content>
