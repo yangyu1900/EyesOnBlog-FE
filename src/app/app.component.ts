@@ -39,7 +39,6 @@ export class AppComponent {
 
   toggleSubPages(eventTarget: HTMLElement, page) {
     page.showSubPages = !page.showSubPages;
-    console.log(eventTarget);
     eventTarget.focus();
   }
 }
