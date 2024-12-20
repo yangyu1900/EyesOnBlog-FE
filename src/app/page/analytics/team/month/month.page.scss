@@ -34,7 +34,7 @@
     }
 }
 
-@media (max-width: 479px) {
+@media (max-width: 800px) {
     .filter-div {
         font-size: 8px;
     }
@@ -46,5 +46,20 @@
 
     select {
         font-size: 85% !important;
+    }
+}
+
+@media screen and (-ms-high-contrast: active) {
+    /* Apply styles for high contrast mode */
+    body {
+        forced-color-adjust: none;
+        background-color: white;
+    }
+}
+
+@media (max-width: 1440px) {
+    ion-card[_ngcontent-dwy-c50] {
+        width: 100% !important;
+        height: 100% !important;
     }
 }

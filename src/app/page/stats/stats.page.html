@@ -3,12 +3,12 @@
 <ion-content [fullscreen]="true">
   <div class="ion-padding filter-div">
     <form [formGroup]="searchRequestForm" (ngSubmit)="onSubmitSearchRequest()" autocomplete="off" novalidate>
-      <input type="text" id="keywords" formControlName="keywords">
+      <input type="text" id="keywords" formControlName="keywords" aria-label="Enter your search input">
       <span>&nbsp;</span>
       <input type="submit" id="submit" value="Search">
     </form>
     <span>&nbsp;</span>
-    <select (change)="selectPod($event.target.value)">
+    <select (change)="selectPod($event.target.value)" aria-label="Select Pod">
       <option *ngFor="let pod of pods" value="{{ pod.podId }}">{{ pod.podName.toUpperCase() }}</option>
     </select>
   </div>
@@ -42,3 +42,5 @@
     <button (click)="onClickNextButton()">Next</button>
   </div>
 </ion-content>
+
+<app-footer></app-footer>

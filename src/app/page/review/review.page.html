@@ -3,7 +3,7 @@
 <ion-content [fullscreen]="true">
   <div class="ion-padding">
     <ion-card>
-      <img src="./assets/picture/balloon.png" />
+      <img src="./assets/picture/balloon.png" alt="Review Request"/>
       <ion-card-header>
         <ion-card-title>REVIEW REQUEST</ion-card-title>
       </ion-card-header>
@@ -28,7 +28,7 @@
             <label for="podId">POD:</label>
             <ion-select interface="popover" [interfaceOptions]="{'cssClass': 'mycomponent-wider-popover'}" id="podId"
               formControlName="podId" multiple="false"
-              (ionChange)="selectPod($event.target.value)">
+              (ionChange)="selectPod($event.target.value)" aria-label="Select Pod">
               <ion-select-option class="select-option" *ngFor="let pod of pods" value="{{ pod.podId }}">
                 {{ pod.podName.toUpperCase() }}
               </ion-select-option>
@@ -41,7 +41,7 @@
           <div class="sub-div">
             <label for="vertical">VERTICAL:</label>
             <ion-select interface="popover" [interfaceOptions]="{'cssClass': 'mycomponent-wider-popover'}" id="vertical"
-              formControlName="vertical">
+              formControlName="vertical" aria-label="Select Vertical">
               <ion-select-option class="select-option" *ngFor="let vertical of verticals" value="{{ vertical }}">
                 {{ vertical.toUpperCase() }}
               </ion-select-option>
@@ -57,3 +57,5 @@
     </ion-card>
   </div>
 </ion-content>
+
+<app-footer></app-footer>

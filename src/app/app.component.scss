@@ -101,8 +101,7 @@ ion-menu.ios ion-note {
 ion-note {
   display: inline-block;
   font-size: 16px;
-
-  color: var(--ion-color-medium-shade);
+  color: #72747b !important;
 }
 
 ion-item.selected {
@@ -147,5 +146,11 @@ ion-icon.secondary {
 
   ion-menu {
     --width: 234px;
+  }
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --ion-color-primary: #2561c9;
   }
 }

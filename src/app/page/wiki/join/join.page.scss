@@ -36,3 +36,9 @@ ion-card-title {
     height: 270px;
   }
 }
+
+@media screen and (max-width: 320px) and (max-height: 256px) and (resolution: 2dppx) {
+  .details-button-container {
+    display: flex !important;
+  }
+}

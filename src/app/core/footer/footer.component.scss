@@ -1,0 +1,14 @@
+ion-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.skip-to-main-content-link {
+  font-size: 80% !important;
+  color: #197bbc;
+  text-decoration: underline;
+  line-height: inherit;
+  cursor: pointer;
+}

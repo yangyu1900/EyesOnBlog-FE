@@ -151,7 +151,7 @@ export class YearPage implements OnInit {
         yAxes: [{
           ticks: {
             beginAtZero: true,
-            stepSize: 1,
+            precision: 0,
             fontSize: window.innerWidth > 1440 ? 12 : window.innerWidth > 479 ? 10 : 8,
           }
         }]
@@ -193,7 +193,7 @@ export class YearPage implements OnInit {
         yAxes: [{
           ticks: {
             beginAtZero: true,
-            stepSize: 1,
+            precision: 0,
             fontSize: window.innerWidth > 1440 ? 12 : window.innerWidth > 479 ? 10 : 8,
           }
         }]
