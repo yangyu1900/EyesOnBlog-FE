@@ -658,7 +658,7 @@ export class YearPage implements OnInit {
   async selectPod(podSelected) {
     this.resetData();
     this.resetCharts();
-    this.podSelected = podSelected;
+    this.podSelected = Number(podSelected);
     this.setVerticals();
     this.setVerticalColors();
     await this.setYears();
@@ -668,7 +668,7 @@ export class YearPage implements OnInit {
   async selectYear(yearSelected) {
     this.resetData();
     this.resetCharts();
-    this.yearSelected = yearSelected;
+    this.yearSelected = Number(yearSelected);
     this.setMonths();
     this.setStartDateEndDate();
     await this.loadData();
@@ -677,7 +677,7 @@ export class YearPage implements OnInit {
   async selectBasis(basisSelected) {
     this.resetData();
     this.resetCharts();
-    this.isFiscal = basisSelected === 1;
+    this.isFiscal = Number(basisSelected) === 1;
     await this.setYears();
     this.setMonths();
     this.setStartDateEndDate();

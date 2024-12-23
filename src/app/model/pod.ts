@@ -1,5 +1,5 @@
 export class Pod {
-    podId: Number;
+    podId: number;
     podName: string;
     verticals: string;
     verticalColors: string;

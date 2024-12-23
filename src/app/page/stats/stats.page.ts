@@ -107,7 +107,7 @@ export class StatsPage implements OnInit {
 
   async selectPod(podSelected) {
     this.resetData();
-    this.podSelected = podSelected;
+    this.podSelected = Number(podSelected);
     this.updateCurrentQuery();
     await this.getDataSize();
     await this.loadData();
@@ -131,7 +131,7 @@ export class StatsPage implements OnInit {
   }
 
   async onClickOrderIcon(e: HTMLElement) {
-    var index = Number.parseInt(e.id);
+    var index = Number(e.id);
     switch (this.orders[index]) {
       case 0:
         e.style.color = this.orderIconColorSelected;
@@ -172,13 +172,13 @@ export class StatsPage implements OnInit {
   }
 
   onMouseEnterOrderIcon(e: HTMLElement) {
-    if (this.orders[Number.parseInt(e.id)] === 0) {
+    if (this.orders[Number(e.id)] === 0) {
       e.style.color = this.orderIconColorHover;
     }
   }
 
   onMouseLeaveOrderIcon(e: HTMLElement) {
-    if (this.orders[Number.parseInt(e.id)] === 0) {
+    if (this.orders[Number(e.id)] === 0) {
       e.style.color = this.orderIconColorDefault;
     }
   }

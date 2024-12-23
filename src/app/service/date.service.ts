@@ -48,7 +48,7 @@ export class DateService {
         return new Date().getMonth() + 1;
     }
 
-    async getFiscalYearsAsDigitArr(podId) {
+    async getFiscalYearsAsDigitArr(podId:number) {
         const fiscalYears = [];
         const earliestRecord = await this.getEarliestRecord(podId);
         const publishDate = earliestRecord.length > 0 ? new Date(Date.parse(earliestRecord[0]['publishDate'])) : new Date(Date.parse('2019-07-01'));
@@ -62,7 +62,7 @@ export class DateService {
         return fiscalYears.reverse();
     }
 
-    getCurrentFiscalYearAsDigit(podId) {
+    getCurrentFiscalYearAsDigit(podId:number) {
         const currentFiscalYear = this.getCurrentCalendarMonthAsDigit() >= 7 ? this.getCurrentCalendarYearAsDigit() + 1 : this.getCurrentCalendarYearAsDigit();
         return currentFiscalYear;
     }

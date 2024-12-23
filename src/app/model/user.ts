@@ -1,12 +1,12 @@
 export class User {
-    userId: Number;
+    userId: number;
     userName: string;
     engineerName: string;
     email: string;
     roles: string;
-    podId: Number;
+    podId: number;
     podName: string;
     verticals: string;
-    reviewCount: Number;
+    reviewCount: number;
     registerDate: Date;
 }

@@ -47,7 +47,7 @@ export class ReviewPage implements OnInit {
   }
 
   selectPod(podId) {
-    this.setVerticals(podId);
+    this.setVerticals(Number(podId));
   }
 
   private setVerticals(podId) {
@@ -63,7 +63,7 @@ export class ReviewPage implements OnInit {
     this.draft.draftId = Date.now();
     this.draft.title = formValue['title'];
     this.draft.url = formValue['url'];
-    this.draft.podId = Number.parseInt(formValue['podId']);
+    this.draft.podId = Number(formValue['podId']);
     this.draft.vertical = formValue['vertical'];
     this.draft.authorId = this.currentUser.userId;
     this.draft.reviewerId = -1;
