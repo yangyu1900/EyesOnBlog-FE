@@ -1,12 +1,12 @@
 export class Blog {
-    blogId: Number;
+    blogId: number;
     title: string;
     url: string;
-    authorId: Number;
+    authorId: number;
     authorName: string;
     publishDate: Date;
-    podId: Number;
+    podId: number;
     podName: string;
     vertical: string;
-    pageview: Number;
+    pageview: number;
 }

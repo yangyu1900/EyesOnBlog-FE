@@ -47,7 +47,7 @@ export class RegisterPage implements OnInit {
   }
 
   selectPod(podId) {
-    this.setVerticals(podId);
+    this.setVerticals(Number(podId));
   }
 
   private setVerticals(podId) {
@@ -56,13 +56,13 @@ export class RegisterPage implements OnInit {
 
   private setUser(aadUserSet: Object) {
     this.user = new User();
-    this.user.userId = Number.parseInt(this.registerRequestForm.value['userId']);
+    this.user.userId = Number(this.registerRequestForm.value['userId']);
     this.user.userName = this.registerRequestForm.value['userName'];
     this.user.engineerName = aadUserSet[0]['user_claims'].filter(x => x['typ'] === 'name')[0]['val'];
     this.user.email = aadUserSet[0]['user_id'];
     this.user.roles = this.registerRequestForm.value['roles'].join();
-    this.user.podId = Number.parseInt(this.registerRequestForm.value['podId']);
-    this.user.podName = this.pods[Number.parseInt(this.registerRequestForm.value['podId'])].podName;
+    this.user.podId = Number(this.registerRequestForm.value['podId']);
+    this.user.podName = this.pods[this.user.podId].podName;
     this.user.verticals = this.registerRequestForm.value['verticals'].join();
     this.user.reviewCount = 0;
   }

@@ -1,12 +1,12 @@
 export class Draft {
-    draftId: Number;
+    draftId: number;
     title: string;
     url: string;
-    authorId: Number;
+    authorId: number;
     authorName: string;
-    reviewerId: Number;
+    reviewerId: number;
     reviewerName: string;
-    podId: Number;
+    podId: number;
     podName: string;
     vertical: string;
     submitDate: Date;

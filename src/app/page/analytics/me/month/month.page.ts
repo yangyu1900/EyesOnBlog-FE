@@ -264,7 +264,7 @@ export class MonthPage implements OnInit {
   async selectPod(podSelected) {
     this.resetData();
     this.resetCharts();
-    this.podSelected = podSelected;
+    this.podSelected = Number(podSelected);
     this.setVerticals();
     this.setVerticalColors;
     await this.setYears();
@@ -274,7 +274,7 @@ export class MonthPage implements OnInit {
   async selectYear(yearSelected) {
     this.resetData();
     this.resetCharts();
-    this.yearSelected = yearSelected;
+    this.yearSelected = Number(yearSelected);
     this.setStartDateEndDate();
     await this.loadData();
   }
@@ -282,7 +282,7 @@ export class MonthPage implements OnInit {
   async selectMonth(monthSelected) {
     this.resetData();
     this.resetCharts();
-    this.monthSelected = monthSelected;
+    this.monthSelected = Number(monthSelected);
     this.setStartDateEndDate();
     await this.loadData();
   }
