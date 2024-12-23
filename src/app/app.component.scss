@@ -153,4 +153,23 @@ ion-icon.secondary {
   :root {
     --ion-color-primary: #2561c9;
   }
+  .menu-item:focus {
+    opacity: 1;
+    border: 2px solid Highlight;
+  }
+  #main-menu:focus {
+    opacity: 1;
+    border: 2px solid Highlight;
+  }
+}
+
+@media (prefers-contrast: less) {
+  .menu-item:focus {
+    opacity: 1;
+    border: 2px solid Highlight;
+  }
+  #main-menu:focus {
+    opacity: 1;
+    border: 2px solid Highlight;
+  }
 }

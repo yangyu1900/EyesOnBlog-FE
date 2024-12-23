@@ -51,14 +51,14 @@ export class RegisterPage implements OnInit {
   }
 
   private setVerticals(podId) {
-    this.verticals = this.pods.filter((pod) => pod.podId == podId)[0].verticals.split(',');
+    this.verticals = this.pods.filter((pod) => pod.podId === podId)[0].verticals.split(',');
   }
 
   private setUser(aadUserSet: Object) {
     this.user = new User();
     this.user.userId = Number.parseInt(this.registerRequestForm.value['userId']);
     this.user.userName = this.registerRequestForm.value['userName'];
-    this.user.engineerName = aadUserSet[0]['user_claims'].filter(x => x['typ'] == 'name')[0]['val'];
+    this.user.engineerName = aadUserSet[0]['user_claims'].filter(x => x['typ'] === 'name')[0]['val'];
     this.user.email = aadUserSet[0]['user_id'];
     this.user.roles = this.registerRequestForm.value['roles'].join();
     this.user.podId = Number.parseInt(this.registerRequestForm.value['podId']);
@@ -80,7 +80,7 @@ export class RegisterPage implements OnInit {
         this.setUser(aadUserSet);
         const res = await this.data.post('/api/user/register', JSON.stringify(this.user), { headers: { 'Content-Type': 'application/json' }, observe: 'response' }) as any;
         await this.spinner.dismiss();
-        if (res.status != 200) {
+        if (res.status !== 200) {
           await this.toast.present({
             message: 'Request failed. Please contact EyesOnBlog support.',
             cssClass: 'toast-fail',

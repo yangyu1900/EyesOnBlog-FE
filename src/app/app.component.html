@@ -8,36 +8,37 @@
 
           <ion-menu-toggle auto-hide="false">
             <ion-item-group *ngFor="let page of appPages">
-              <ion-item *ngIf="page.subPages == null" routerDirection="root" [routerLink]="[page.url]" lines="none"
-                detail="false" routerLinkActive="selected">
+              <ion-item class="menu-item" *ngIf="page.subPages === null" routerDirection="root" [routerLink]="[page.url]"
+                lines="none" detail="false" routerLinkActive="selected" attr.aria-label="{{ page.title }}">
                 <ion-icon slot="start" src="{{ page.icon }}" attr.aria-label="{{ page.title }}"></ion-icon>
                 <ion-label>{{ page.title }}</ion-label>
               </ion-item>
             </ion-item-group>
           </ion-menu-toggle>
           <ion-item-group *ngFor="let page of appPages">
-            <ion-item *ngIf="page.subPages != null" lines="none" detail="false">
+            <ion-item class="menu-item" *ngIf="page.subPages !== null" lines="none" detail="false" attr.aria-label="{{ page.title }}">
               <ion-icon slot="start" src="{{ page.icon }}" attr.aria-label="{{ page.title }}"></ion-icon>
               <ion-label>{{ page.title }}</ion-label>
-              <button class="toggle" role="button" (click)="toggleSubPages($event.target, page)"
-                tabindex="0" aria-label="toggle">
-                <ion-icon *ngIf="!page.showSubPages" slot="end" src="{{ page.icon_close }}" class="secondary"></ion-icon>
+              <button class="toggle" role="button" (click)="toggleSubPages($event.target, page)" tabindex="0"
+                aria-label="toggle" attr.aria-expanded="{{ page.showSubPages }}">
+                <ion-icon *ngIf="!page.showSubPages" slot="end" src="{{ page.icon_close }}"
+                  class="secondary"></ion-icon>
                 <ion-icon *ngIf="page.showSubPages" slot="end" src="{{ page.icon_open }}" clase="secondary"></ion-icon>
               </button>
             </ion-item>
 
-            <ion-item-group *ngIf="page.subPages != null && page.showSubPages">
+            <ion-item-group *ngIf="page.subPages !== null && page.showSubPages">
               <ion-item-group *ngFor="let subPage of page.subPages">
-                <ion-item *ngIf="subPage.subPages == null" routerDirection="root" [routerLink]="[subPage.url]"
-                  lines="none" detail="false" routerLinkActive="selected">
+                <ion-item class="menu-item" *ngIf="subPage.subPages === null" routerDirection="root"
+                  [routerLink]="[subPage.url]" lines="none" detail="false" routerLinkActive="selected">
                   <ion-icon slot="start" attr.aria-label="{{ subPage.title }}"></ion-icon>
                   <ion-label>{{ subPage.title }}</ion-label>
                 </ion-item>
-                <ion-item *ngIf="subPage.subPages != null" lines="none" detail="false">
+                <ion-item class="menu-item" *ngIf="subPage.subPages !== null" lines="none" detail="false">
                   <ion-icon slot="start" attr.aria-label="{{ subPage.title }}"></ion-icon>
                   <ion-label>{{ subPage.title }}</ion-label>
-                  <button class="toggle" role="button" (click)="toggleSubPages($event.target, subPage)"
-                    tabindex="0" aria-label="toggle">
+                  <button class="toggle" role="button" (click)="toggleSubPages($event.target, subPage)" tabindex="0"
+                    aria-label="toggle" attr.aria-expanded="{{ subPage.showSubPages }}">
                     <ion-icon *ngIf="!subPage.showSubPages" slot="end" src="{{ page.icon_close }}" class="secondary">
                     </ion-icon>
                     <ion-icon *ngIf="subPage.showSubPages" slot="end" src="{{ page.icon_open }}" clase="secondary">
@@ -45,10 +46,10 @@
                   </button>
                 </ion-item>
                 <ion-menu-toggle auto-hide="false">
-                  <ion-item-group *ngIf="subPage.subPages != null && subPage.showSubPages">
-                    <ion-item *ngFor="let subSubPage of subPage.subPages" routerDirection="root"
-                      [routerLink]="[subSubPage.url]" lines="none" detail="false" routerLinkActive="selected"
-                      class="subpage">
+                  <ion-item-group *ngIf="subPage.subPages !== null && subPage.showSubPages">
+                    <ion-item class="menu-item subpage" *ngFor="let subSubPage of subPage.subPages"
+                      routerDirection="root" [routerLink]="[subSubPage.url]" lines="none" detail="false"
+                      routerLinkActive="selected" attr.aria-label="{{ subPage.title }}">
                       <ion-icon slot="start" attr.aria-label="{{ subPage.title }}"></ion-icon>
                       <ion-label>{{ subSubPage.title }}</ion-label>
                     </ion-item>

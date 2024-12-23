@@ -5,7 +5,7 @@
     </ion-buttons>
     <ion-title>{{ title }}</ion-title>
     <ion-buttons slot="end">
-      <ion-button *ngIf="!currentUser?.userId" [routerLink]="['/page/register']" id="register">Register</ion-button>
+      <ion-button class="header-button" *ngIf="!currentUser?.userId" [routerLink]="['/page/register']" id="register">Register</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>

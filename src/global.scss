@@ -26,7 +26,8 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 // add high contrast mode
-
+@import '@ionic/angular/css/palettes/high-contrast.system.css';
+@import '@ionic/angular/css/palettes/high-contrast-dark.system.css';
 
 // add font
 @import url(https://fonts.googleapis.com/css?family=Poppins);

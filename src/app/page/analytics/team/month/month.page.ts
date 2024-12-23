@@ -61,11 +61,11 @@ export class MonthPage implements OnInit {
   }
 
   setVerticalColors() {
-    this.verticalColors = this.pods.filter((pod) => pod.podId == this.podSelected)[0].verticalColors.split(',');
+    this.verticalColors = this.pods.filter((pod) => pod.podId === this.podSelected)[0].verticalColors.split(',');
   }
 
   setVerticals() {
-    this.verticals = this.pods.filter((pod) => pod.podId == this.podSelected)[0].verticals.split(',');
+    this.verticals = this.pods.filter((pod) => pod.podId === this.podSelected)[0].verticals.split(',');
   }
 
   async setYears() {
@@ -154,7 +154,7 @@ export class MonthPage implements OnInit {
         var entry = {};
         entry['label'] = vertical;
         var element = teamMonthlyPostByVerticalResponse.filter((e) => {
-          return e['vertical'] && e['vertical'].toLowerCase() == vertical.toLowerCase();
+          return e['vertical'] && e['vertical'].toLowerCase() === vertical.toLowerCase();
         });
         entry['data'] = element.length > 0 ? element[0]['count(*)'] : 0;
         teamMonthlyPostByVerticalData.push(entry);
@@ -179,7 +179,7 @@ export class MonthPage implements OnInit {
         var entry = {};
         entry['label'] = vertical;
         var element = teamMonthlyPageviewByVerticalResponse.filter((e) => {
-          return e['vertical'] && e['vertical'].toLowerCase() == vertical.toLowerCase();
+          return e['vertical'] && e['vertical'].toLowerCase() === vertical.toLowerCase();
         });
         entry['data'] = element.length > 0 ? element[0]['sum(pageview)'] : 0;
         teamMonthlyPageviewByVerticalData.push(entry);
@@ -203,7 +203,7 @@ export class MonthPage implements OnInit {
         var entry = {};
         entry['label'] = vertical;
         var element = teamMonthlyAvgPageviewPerPostByVerticalResponse.filter((e) => {
-          return e['vertical'] && e['vertical'].toLowerCase() == vertical.toLowerCase();
+          return e['vertical'] && e['vertical'].toLowerCase() === vertical.toLowerCase();
         });
         entry['data'] = element.length > 0 ? Math.round(element[0]['avg(pageview)']) : 0;
         teamMonthlyAvgPageviewPerPostByVerticalData.push(entry);

@@ -26,8 +26,8 @@
           </ion-icon>
         </mat-header-cell>
         <mat-cell *matCellDef="let record" class="summary-table-column-{{ header }}">
-          <span *ngIf="header != 'title'">{{ record[header] }}</span>
-          <a *ngIf="header == 'title'" href="{{ record['url'] }}" target="_blank">{{ record[header] }}</a>
+          <span *ngIf="header !== 'title'">{{ record[header] }}</span>
+          <a *ngIf="header === 'title'" href="{{ record['url'] }}" target="_blank">{{ record[header] }}</a>
         </mat-cell>
       </ng-container>
 
