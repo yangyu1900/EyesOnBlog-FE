@@ -34,8 +34,8 @@ ion-icon {
 }
 
 a {
-  color: #2199e8;
-  text-decoration: none;
+  color: #197bbc;
+  text-decoration: underline;
   line-height: inherit;
   cursor: pointer;
 }
@@ -95,5 +95,14 @@ button {
 
   mat-table {
     width: 90%;
+  }
+}
+
+@media screen and (max-width: 320px) and (max-height: 256px) and (resolution: 2dppx) {
+
+  mat-row,
+  mat-header-row,
+  mat-footer-row {
+    width: 145% !important;
   }
 }

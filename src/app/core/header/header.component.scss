@@ -6,3 +6,17 @@ ion-title,
 ion-button {
   font-size: 80% !important;
 }
+
+@media (prefers-contrast: more) {
+  .header-button:focus {
+    opacity: 1;
+    border: 2px solid Highlight;
+  }
+}
+
+@media (prefers-contrast: less) {
+  .header-button:focus {
+    opacity: 1;
+    border: 2px solid Highlight;
+  }
+}

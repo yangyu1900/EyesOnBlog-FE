@@ -1,0 +1,28 @@
+ion-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-button {
+  font-size: 80% !important;
+  color: #197bbc;
+  text-decoration: underline;
+  line-height: inherit;
+  cursor: pointer;
+}
+
+@media (prefers-contrast: more) {
+  .footer-button:focus {
+    opacity: 1;
+    border: 2px solid Highlight;
+  }
+}
+
+@media (prefers-contrast: less) {
+  .footer-button:focus {
+    opacity: 1;
+    border: 2px solid Highlight;
+  }
+}

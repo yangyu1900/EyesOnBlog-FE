@@ -33,12 +33,12 @@ const routes: Routes = [
   },
   {
     path: 'page/analytics/team/year',
-    canActivate: [GuardService],
+    //canActivate: [GuardService],
     loadChildren: () => import('./page/analytics/team/year/year.module').then(m => m.YearPageModule)
   },
   {
     path: 'page/analytics/team/month',
-    canActivate: [GuardService],
+    //canActivate: [GuardService],
     loadChildren: () => import('./page/analytics/team/month/month.module').then(m => m.MonthPageModule)
   },
   {

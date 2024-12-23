@@ -51,7 +51,7 @@ export class ReviewPage implements OnInit {
   }
 
   private setVerticals(podId) {
-    this.verticals = this.pods.filter((pod) => pod.podId == podId)[0].verticals.split(',');
+    this.verticals = this.pods.filter((pod) => pod.podId === podId)[0].verticals.split(',');
   }
 
   getErrorControl() {
@@ -87,7 +87,7 @@ export class ReviewPage implements OnInit {
           });
         }) as any;
       await this.spinner.dismiss();
-      if (res.status != 200) {
+      if (res.status !== 200) {
         await this.toast.present({
           message: 'Request failed. Please contact EyesOnBlog support.',
           cssClass: 'toast-fail',

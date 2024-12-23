@@ -97,11 +97,11 @@ export class YearPage implements OnInit {
   }
 
   setVerticalColors() {
-    this.verticalColors = this.pods.filter((pod) => pod.podId == this.podSelected)[0].verticalColors.split(',');
+    this.verticalColors = this.pods.filter((pod) => pod.podId === this.podSelected)[0].verticalColors.split(',');
   }
 
   setVerticals() {
-    this.verticals = this.pods.filter((pod) => pod.podId == this.podSelected)[0].verticals.split(',');
+    this.verticals = this.pods.filter((pod) => pod.podId === this.podSelected)[0].verticals.split(',');
   }
 
   async setYears() {
@@ -151,7 +151,7 @@ export class YearPage implements OnInit {
         yAxes: [{
           ticks: {
             beginAtZero: true,
-            stepSize: 1,
+            precision: 0,
             fontSize: window.innerWidth > 1440 ? 12 : window.innerWidth > 479 ? 10 : 8,
           }
         }]
@@ -193,7 +193,7 @@ export class YearPage implements OnInit {
         yAxes: [{
           ticks: {
             beginAtZero: true,
-            stepSize: 1,
+            precision: 0,
             fontSize: window.innerWidth > 1440 ? 12 : window.innerWidth > 479 ? 10 : 8,
           }
         }]
@@ -353,7 +353,7 @@ export class YearPage implements OnInit {
         var entry = {};
         entry['label'] = monthLetterStr;
         var element = myYearlyPostByMonthResponse.filter((e) => {
-          return e['month(publishDate)'] == this.date.monthLetterStrToDigit(monthLetterStr);
+          return e['month(publishDate)'] === this.date.monthLetterStrToDigit(monthLetterStr);
         });
         entry['data'] = element.length > 0 ? element[0]['count(*)'] : 0;
         myYearlyPostByMonthData.push(entry);
@@ -379,7 +379,7 @@ export class YearPage implements OnInit {
         var entry = {};
         entry['label'] = vertical;
         var element = myYearlyPostByVerticalResponse.filter((e) => {
-          return e['vertical'] && e['vertical'].toLowerCase() == vertical.toLowerCase();
+          return e['vertical'] && e['vertical'].toLowerCase() === vertical.toLowerCase();
         });
         entry['data'] = element.length > 0 ? element[0]['count(*)'] : 0;
         myYearlyPostByVerticalData.push(entry);
@@ -407,7 +407,7 @@ export class YearPage implements OnInit {
           var subEntry = {};
           subEntry['label'] = monthLetterStr;
           var element = myYearlyPostByVerticalByMonthResponse.filter((e) => {
-            return e['vertical'] && e['vertical'].toLowerCase() == vertical.toLowerCase() && e['month(publishDate)'] == this.date.monthLetterStrToDigit(monthLetterStr);
+            return e['vertical'] && e['vertical'].toLowerCase() === vertical.toLowerCase() && e['month(publishDate)'] === this.date.monthLetterStrToDigit(monthLetterStr);
           });
           subEntry['data'] = element.length > 0 ? element[0]['count(*)'] : 0;
           entry['data'].push(subEntry);
@@ -436,7 +436,7 @@ export class YearPage implements OnInit {
         var entry = {};
         entry['label'] = monthLetterStr;
         var element = myYearlyPageviewByMonthResponse.filter((e) => {
-          return e['month(publishDate)'] == this.date.monthLetterStrToDigit(monthLetterStr);
+          return e['month(publishDate)'] === this.date.monthLetterStrToDigit(monthLetterStr);
         });
         entry['data'] = element.length > 0 ? element[0]['sum(pageview)'] : 0;
         myYearlyPageviewByMonthData.push(entry);
@@ -462,7 +462,7 @@ export class YearPage implements OnInit {
         var entry = {};
         entry['label'] = vertical;
         var element = myYearlyPageviewByVerticalResponse.filter((e) => {
-          return e['vertical'] && e['vertical'].toLowerCase() == vertical.toLowerCase();
+          return e['vertical'] && e['vertical'].toLowerCase() === vertical.toLowerCase();
         });
         entry['data'] = element.length > 0 ? element[0]['sum(pageview)'] : 0;
         myYearlyPageviewByVerticalData.push(entry);
@@ -490,7 +490,7 @@ export class YearPage implements OnInit {
           var subEntry = {};
           subEntry['label'] = monthLetterStr;
           var element = myYearlyPageviewByVerticalByMonthResponse.filter((e) => {
-            return e['vertical'] && e['vertical'].toLowerCase() == vertical.toLowerCase() && e['month(publishDate)'] == this.date.monthLetterStrToDigit(monthLetterStr);
+            return e['vertical'] && e['vertical'].toLowerCase() === vertical.toLowerCase() && e['month(publishDate)'] === this.date.monthLetterStrToDigit(monthLetterStr);
           });
           subEntry['data'] = element.length > 0 ? element[0]['sum(pageview)'] : 0;
           entry['data'].push(subEntry);
@@ -520,7 +520,7 @@ export class YearPage implements OnInit {
         var entry = {};
         entry['label'] = monthLetterStr;
         var element = myYearlyAvgPageviewPerPostByMonthResponse.filter((e) => {
-          return e['month(publishDate)'] == this.date.monthLetterStrToDigit(monthLetterStr);
+          return e['month(publishDate)'] === this.date.monthLetterStrToDigit(monthLetterStr);
         });
         entry['data'] = element.length > 0 ? Math.round(element[0]['avg(pageview)']) : 0;
         myYearlyAvgPageviewPerPostByMonthData.push(entry);
@@ -546,7 +546,7 @@ export class YearPage implements OnInit {
         var entry = {};
         entry['label'] = vertical;
         var element = myYearlyAvgPageviewPerPostByVerticalResponse.filter((e) => {
-          return e['vertical'] && e['vertical'].toLowerCase() == vertical.toLowerCase();
+          return e['vertical'] && e['vertical'].toLowerCase() === vertical.toLowerCase();
         });
         entry['data'] = element.length > 0 ? Math.round(element[0]['avg(pageview)']) : 0;
         myYearlyAvgPageviewPerPostByVerticalData.push(entry);
@@ -574,7 +574,7 @@ export class YearPage implements OnInit {
           var subEntry = {};
           subEntry['label'] = monthLetterStr;
           var element = myYearlyAvgPageviewPerPostByVerticalByMonthResponse.filter((e) => {
-            return e['vertical'] && e['vertical'].toLowerCase() == vertical.toLowerCase() && e['month(publishDate)'] == this.date.monthLetterStrToDigit(monthLetterStr);
+            return e['vertical'] && e['vertical'].toLowerCase() === vertical.toLowerCase() && e['month(publishDate)'] === this.date.monthLetterStrToDigit(monthLetterStr);
           });
           subEntry['data'] = element.length > 0 ? Math.round(element[0]['avg(pageview)']) : 0;
           entry['data'].push(subEntry);
@@ -686,7 +686,7 @@ export class YearPage implements OnInit {
   async selectBasis(basisSelected) {
     this.resetData();
     this.resetCharts();
-    this.isFiscal = basisSelected == 1;
+    this.isFiscal = basisSelected === 1;
     await this.setYears();
     this.setMonths();
     this.setStartDateEndDate();

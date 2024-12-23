@@ -78,7 +78,7 @@ export class StatsPage implements OnInit {
 
   private updateCurrentQuery() {
     this.currentQuery = `filterBy=podId&filterByValue=${this.podSelected}`
-    if (this.keywords.length != 0) this.currentQuery += `&filterBy=title,vertical,authorName&filterByValue='${this.keywords.join('\',\'')}'`;
+    if (this.keywords.length !== 0) this.currentQuery += `&filterBy=title,vertical,authorName&filterByValue='${this.keywords.join('\',\'')}'`;
     this.orderBys.forEach((orderBy, index) => this.currentQuery += `&orderBy=${orderBy}&orderByOrder=${this.orderByOrders[index]}`);
   }
 
@@ -160,8 +160,8 @@ export class StatsPage implements OnInit {
         var indexToRemove = this.orderBys.indexOf(this.tableHeaders[index]);
         delete this.orderBys[indexToRemove];
         delete this.orderByOrders[indexToRemove];
-        this.orderBys = this.orderBys.filter(orderBy => orderBy != undefined);
-        this.orderByOrders = this.orderByOrders.filter(order => order != undefined);
+        this.orderBys = this.orderBys.filter(orderBy => orderBy !== undefined);
+        this.orderByOrders = this.orderByOrders.filter(order => order !== undefined);
         this.orders[index] = 0;
         this.resetData();
         this.updateCurrentQuery();
@@ -172,13 +172,13 @@ export class StatsPage implements OnInit {
   }
 
   onMouseEnterOrderIcon(e: HTMLElement) {
-    if (this.orders[Number.parseInt(e.id)] == 0) {
+    if (this.orders[Number.parseInt(e.id)] === 0) {
       e.style.color = this.orderIconColorHover;
     }
   }
 
   onMouseLeaveOrderIcon(e: HTMLElement) {
-    if (this.orders[Number.parseInt(e.id)] == 0) {
+    if (this.orders[Number.parseInt(e.id)] === 0) {
       e.style.color = this.orderIconColorDefault;
     }
   }

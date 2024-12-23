@@ -96,6 +96,11 @@ ion-select {
   padding-top: 0.5rem;
 }
 
+input#submit:focus,input#submit:focus-visible {
+  border-color: #4854e0;
+  outline: 1px;
+}
+
 @media (max-width: 479px) {
   ion-card {
     width: 90%;

@@ -37,7 +37,8 @@ export class AppComponent {
   constructor() {
   }
 
-  toggleSubPages(page) {
+  toggleSubPages(eventTarget: HTMLElement, page) {
     page.showSubPages = !page.showSubPages;
+    eventTarget.focus();
   }
 }
